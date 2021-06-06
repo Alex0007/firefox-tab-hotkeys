@@ -1,3 +1,5 @@
+const manifest = require("./manifest.json");
+
 const commandsP = browser.commands.getAll().then((commands) => {
   return commands
     .filter((command) => typeof command.shortcut === "string")
@@ -8,7 +10,10 @@ const commandsP = browser.commands.getAll().then((commands) => {
 });
 
 const handleShortcut = async (commandName: string) => {
-  // console.log({ strName: commandName }, new Date(), Math.random());
+  if (!manifest.commands[commandName]) {
+    return;
+  }
+
   const tabs = await browser.tabs
     .query({
       currentWindow: true,
