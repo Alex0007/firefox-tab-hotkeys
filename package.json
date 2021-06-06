@@ -1,0 +1,32 @@
+{
+  "name": "firefox-tab-hotkeys",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack",
+    "start:firefox": "npx web-ext run --source-dir ./build/"
+  },
+  "dependencies": {
+    "mousetrap": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^82.0.0",
+    "@types/mousetrap": "^1.6.8",
+    "copy-webpack-plugin": "^9.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
+    "simple-git-hooks": "^2.4.1",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,css,md}": [
+      "prettier --write"
+    ]
+  }
+}
