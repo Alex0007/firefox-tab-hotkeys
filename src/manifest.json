@@ -18,7 +18,9 @@
 			"background.js"
 		]
 	},
-	"icons": {},
+	"icons": {
+		"128": "icons/icon128.png"
+	},
 	"commands": {
 		"pin-tab": {
 			"suggested_key": {

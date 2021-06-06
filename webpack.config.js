@@ -9,10 +9,16 @@ const ENV = (process.env.ENV = process.env.NODE_ENV);
 
 const plugins = [
   new CopyWebpackPlugin({
-    patterns: ["./src/manifest.json"],
+    patterns: [
+      "./src/manifest.json",
+      {
+        from: "src/icons",
+        to: "icons",
+      },
+    ],
   }),
   new webpack.SourceMapDevToolPlugin({
-    include: ["popup/main.js", "background.js"],
+    include: ["background.js"],
   }),
   new webpack.DefinePlugin({
     "process.env": {
