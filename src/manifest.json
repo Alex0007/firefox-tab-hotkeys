@@ -5,7 +5,7 @@
 	"version": "1.0",
 	"applications":{
 		"gecko": {
-			"id": "left-tab-right-tab@jeffersonscher.com",
+			"id": "firefox-tab-hotkeys@alex0007",
 			"strict_min_version": "60.0"
 		}
 	},
