@@ -1,6 +1,6 @@
 {
   "name": "firefox-tab-hotkeys",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "scripts": {
     "build": "webpack",

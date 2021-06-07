@@ -1,19 +1,15 @@
 import * as Mousetrap from "mousetrap";
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  Mousetrap.prototype.stopCallback = () => {
-    return false;
-  };
+Mousetrap.prototype.stopCallback = () => {
+  return false;
+};
 
-  browser.runtime.sendMessage("getCommands");
+browser.runtime.sendMessage("getCommands");
 
-  browser.runtime.onMessage.addListener(
-    async (message, sender, sendResponse) => {
-      if (message.setCommands) {
-        initCommands(message.setCommands);
-      }
-    }
-  );
+browser.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.setCommands) {
+    initCommands(message.setCommands);
+  }
 });
 
 const initCommands = (commands: any[]) => {

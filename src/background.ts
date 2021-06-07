@@ -1,5 +1,15 @@
 const manifest = require("./manifest.json");
 
+let lastCommand: {
+  name: string;
+  date: number;
+} = {
+  name: null,
+  date: 0,
+};
+
+const DELAY_MS = 100;
+
 const commandsP = browser.commands.getAll().then((commands) => {
   return commands
     .filter((command) => typeof command.shortcut === "string")
@@ -13,6 +23,18 @@ const handleShortcut = async (commandName: string) => {
   if (!manifest.commands[commandName]) {
     return;
   }
+
+  if (
+    lastCommand.name === commandName &&
+    lastCommand.date + DELAY_MS > +new Date()
+  ) {
+    return;
+  }
+
+  lastCommand = {
+    name: commandName,
+    date: +new Date(),
+  };
 
   const tabs = await browser.tabs
     .query({
